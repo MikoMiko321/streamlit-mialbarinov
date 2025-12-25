@@ -1,6 +1,9 @@
 import logging
 
+import streamlit as st
 from dotenv import load_dotenv
+
+from services.open_weather_map import get_current_weather
 
 
 def main():
@@ -11,7 +14,12 @@ def main():
 
     logger = logging.getLogger(__name__)
     logger.info(f"Loading environment variables: {load_dotenv()}")
-    # print(get_current_weather("London"))
+
+    st.title("Weather app")
+
+    if st.button("Get weather"):
+        weather = get_current_weather("London")
+        st.write(weather)
 
 
 if __name__ == "__main__":
