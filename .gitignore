@@ -5,6 +5,8 @@
 **/*.py[cod]
 .DS_Store
 **/.DS_Store
+.ruff_cache
+.vscode
 
 **/debug_data/
 /recommender/.ipynb_checkpoints/
