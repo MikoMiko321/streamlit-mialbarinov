@@ -1,0 +1,12 @@
+[theme]
+# base = "light" | "dark"
+
+# primaryColor = "#00ff00"
+# backgroundColor = "#0000ff"
+# secondaryBackgroundColor = "#ff0000"
+
+# textColor = "#000000"
+
+# font = "sans serif" | "serif" | "monospace"
+font = "monospace"
+baseFontSize = 30

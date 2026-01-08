@@ -1,3 +1,4 @@
+import base64
 import logging
 
 import pandas as pd
@@ -17,38 +18,105 @@ def main():
     logger = logging.getLogger(__name__)
     logger.info(f"Loading environment variables: {load_dotenv()}")
 
+    # st.markdown(
+    #     """
+    #     <style>
+    #     /* базовый текст всего приложения */
+    #     .stApp {
+    #         font-family: 'Inter', sans-serif;
+    #         font-size: 20px;
+    #     }
+
+    #     /* заголовки */
+    #     .stApp h1,
+    #     .stApp h2,
+    #     .stApp h3,
+    #     .stApp h4,
+    #     .stApp h5,
+    #     .stApp h6 {
+    #         font-family: 'Inter', sans-serif;
+    #         font-size: 32px;
+    #         font-weight: 700;
+    #     }
+
+    #     /* кнопки */
+    #     .stButton > button {
+    #         font-family: 'Inter', sans-serif !important;
+    #         font-size: 20px !important;
+    #     }
+
+    #     /* selectbox: label + value */
+    #     label,
+    #     div[data-baseweb="select"] > div {
+    #         font-family: 'Inter', sans-serif !important;
+    #         font-size: 20px !important;
+    #     }
+
+    #     /* selectbox dropdown (portal!) */
+    #     div[data-baseweb="popover"] * {
+    #         font-family: 'Inter', sans-serif !important;
+    #         font-size: 20px !important;
+    #     }
+    #     </style>
+    #     """,
+    #     unsafe_allow_html=True,
+    # )
+    # st.markdown(
+    #     """
+    #     <style>
+    #     .stApp {
+    #         background-image: url("https://images.unsplash.com/photo-1501785888041-af3ef285b470");
+    #         background-size: cover;
+    #         background-position: center;
+    #         background-repeat: no-repeat;
+    #         background-attachment: fixed;
+    #     }
+    #     </style>
+    #     """,
+    #     unsafe_allow_html=True,
+    # )
+    with open("data/bg_image.png", "rb") as f:
+        bg_image = base64.b64encode(f.read()).decode()
+
     st.markdown(
-        """
+        f"""
         <style>
-        /* весь текст */
-        .stApp {
-            font-family: 'Inter', sans-serif;
-            font-size: 20px;
-        }
-
+        header[data-testid="stHeader"] {{ display:none; }}
+        div[data-testid="stDecoration"] {{ display:none; }}
+        div[data-testid="stAppViewContainer"] .block-container {{
+            padding-top: 0rem;
+            padding-bottom: 0rem;
+        }}
+        .stApp {{
+            background-image: url("data:image/png;base64,{bg_image}");
+            background-size: 200px 200px;
+            /* background-size: auto;*/
+            background-position: top left;
+            background-repeat: repeat;
+            background-attachment: scroll;
+        }}
         /* заголовки */
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Inter', sans-serif;
-            font-size: 32px;
-            font-weight: 700;
-        }
-        /* кнопки */
-        button {
-            font-family: Inter, sans-serif !important;
-            font-size: 20px !important;
-        }
-
-        /* selectbox */
-        div[data-baseweb="select"] * {
-            font-family: Inter, sans-serif !important;
-            font-size: 20px !important;
-        }
+        .stApp h1,
+        .stApp h2,
+        .stApp h3,
+        .stApp h4,
+        .stApp h5,
+        .stApp h6 {{
+        font-family: 'Inter', sans-serif;
+        font-size: 34px; /* Here is the header font size!!*/
+        font-weight: 700;
+        }}
         </style>
         """,
         unsafe_allow_html=True,
     )
 
-    st.set_page_config(layout="wide")
+    st.set_page_config(
+        page_title="Weather Analysis",
+        page_icon="🌦️",
+        layout="wide",
+        initial_sidebar_state="expanded",
+    )
 
     st.title("Анализ температурных данных и мониторинг текущей температуры через OpenWeatherMap API")
 
