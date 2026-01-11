@@ -3,18 +3,21 @@ import os
 
 import requests
 import streamlit as st
+from dotenv import load_dotenv
 
+load_dotenv()
 logger = logging.getLogger(__name__)
+
+API_KEY = os.getenv("OPEN_WEATHER_MAP_API_KEY") or st.secrets["OPEN_WEATHER_MAP_API_KEY"]
 
 
 def get_current_weather(city: str) -> dict:
-    api_key = os.getenv("OPEN_WEATHER_MAP_API_KEY") or st.secrets["OPEN_WEATHER_MAP_API_KEY"]
-    if not api_key:
+    if not API_KEY:
         raise RuntimeError("OPEN_WEATHER_MAP_API_KEY not set")
     url = "https://api.openweathermap.org/data/2.5/weather"
     params = {
         "q": city,
-        "appid": api_key,
+        "appid": API_KEY,
         "units": "metric",
     }
 
