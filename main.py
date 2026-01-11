@@ -45,13 +45,13 @@ def main():
     # Это всякая косметическая разметка страницы по подсказкам чата ГПТ
     # header[data-testid="stHeader"] {{ display:none; }}
     # div[data-testid="stDecoration"] {{ display:none; }}
+    # div[data-testid="stAppViewContainer"] .block-container {{
+    #     padding-top: 0rem;
+    #     padding-bottom: 0rem;
+    # }}
     st.markdown(
         f"""
         <style>
-        div[data-testid="stAppViewContainer"] .block-container {{
-            padding-top: 0rem;
-            padding-bottom: 0rem;
-        }}
         .stApp {{
             background-image: url("data:image/png;base64,{bg_image}");
             background-size: 200px 200px;
@@ -75,6 +75,7 @@ def main():
         [data-testid="stSidebar"] h1 {{
             padding-top: 0;
             margin-top: 0;
+            width: 350px !important;
         }}
         </style>
         """,
