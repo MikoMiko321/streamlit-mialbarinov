@@ -43,43 +43,43 @@ def main():
         bg_image = base64.b64encode(f.read()).decode()
 
     # Это всякая косметическая разметка страницы по подсказкам чата ГПТ
-    st.markdown(
-        f"""
-        <style>
-        header[data-testid="stHeader"] {{ display:none; }}
-        div[data-testid="stDecoration"] {{ display:none; }}
-        div[data-testid="stAppViewContainer"] .block-container {{
-            padding-top: 0rem;
-            padding-bottom: 0rem;
-        }}
-        .stApp {{
-            background-image: url("data:image/png;base64,{bg_image}");
-            background-size: 200px 200px;
-            /* background-size: auto;*/
-            background-position: top left;
-            background-repeat: repeat;
-            background-attachment: scroll;
-        }}
-        /* заголовки */
-        .stApp h1,
-        .stApp h2,
-        .stApp h3,
-        .stApp h4,
-        .stApp h5,
-        .stApp h6 {{
-        font-family: 'Inter', sans-serif;
-        font-size: 34px; /* Here is the header font size!!*/
-        font-weight: 700;
-        }}
-        /* sidebar title */
-        [data-testid="stSidebar"] h1 {{
-            padding-top: 0;
-            margin-top: 0;
-        }}
-        </style>
-        """,
-        unsafe_allow_html=True,
-    )
+    # st.markdown(
+    #     f"""
+    #     <style>
+    #     header[data-testid="stHeader"] {{ display:none; }}
+    #     div[data-testid="stDecoration"] {{ display:none; }}
+    #     div[data-testid="stAppViewContainer"] .block-container {{
+    #         padding-top: 0rem;
+    #         padding-bottom: 0rem;
+    #     }}
+    #     .stApp {{
+    #         background-image: url("data:image/png;base64,{bg_image}");
+    #         background-size: 200px 200px;
+    #         /* background-size: auto;*/
+    #         background-position: top left;
+    #         background-repeat: repeat;
+    #         background-attachment: scroll;
+    #     }}
+    #     /* заголовки */
+    #     .stApp h1,
+    #     .stApp h2,
+    #     .stApp h3,
+    #     .stApp h4,
+    #     .stApp h5,
+    #     .stApp h6 {{
+    #     font-family: 'Inter', sans-serif;
+    #     font-size: 34px; /* Here is the header font size!!*/
+    #     font-weight: 700;
+    #     }}
+    #     /* sidebar title */
+    #     [data-testid="stSidebar"] h1 {{
+    #         padding-top: 0;
+    #         margin-top: 0;
+    #     }}
+    #     </style>
+    #     """,
+    #     unsafe_allow_html=True,
+    # )
 
     st.title("Анализ температурных данных и мониторинг текущей температуры через OpenWeatherMap API")
 
